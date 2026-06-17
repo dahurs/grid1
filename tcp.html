@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animación TCP/IP</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0b1220;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.layer {
+  width: 180px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #1e293b;
+  border: 2px solid #334155;
+}
+
+.packet {
+  width: 40px;
+  height: 40px;
+  background: #00d4ff;
+  border-radius: 50%;
+  position: absolute;
+  left: 220px;
+  top: 100px;
+  transition: all 1s ease-in-out;
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #00d4ff;
+  cursor: pointer;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<h1>Viaje de un paquete TCP/IP</h1>
+
+<div class="container">
+  <!-- ORIGEN -->
+  <div class="stack">
+    <div class="layer">Aplicación</div>
+    <div class="layer">TCP</div>
+    <div class="layer">IP</div>
+    <div class="layer">Ethernet</div>
+  </div>
+
+  <!-- DESTINO -->
+  <div class="stack">
+    <div class="layer">Aplicación</div>
+    <div class="layer">TCP</div>
+    <div class="layer">IP</div>
+    <div class="layer">Ethernet</div>
+  </div>
+</div>
+
+<div class="packet" id="packet"></div>
+
+<button onclick="animar()">Enviar paquete</button>
+
+<script>
+function animar() {
+  const packet = document.getElementById("packet");
+
+  const pasos = [
+    { left: "220px", top: "100px" }, // Aplicación origen
+    { left: "220px", top: "170px" }, // TCP origen
+    { left: "220px", top: "240px" }, // IP origen
+    { left: "220px", top: "310px" }, // Ethernet origen
+    { left: "600px", top: "310px" }, // Red
+    { left: "600px", top: "240px" }, // IP destino
+    { left: "600px", top: "170px" }, // TCP destino
+    { left: "600px", top: "100px" }  // Aplicación destino
+  ];
+
+  pasos.forEach((pos, i) => {
+    setTimeout(() => {
+      packet.style.left = pos.left;
+      packet.style.top = pos.top;
+    }, i * 1000);
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+
+    h1 {
+      text-align: center;
+    }
+
+
+    .grid-container {
+      display: grid;
+      /* Aquí está la clave: auto-fit con un ancho mínimo */
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 150px);
+      gap: 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+
+    .cuadro {
+      background-color: steelblue;
+      color: white;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+
+    /* Colores distintos para distinguir cada cuadro */
+    .cuadro:nth-child(1) { background-color: #e74c3c; }
+    .cuadro:nth-child(2) { background-color: #3498db; 
+                            background-image: url("toyota.jpg"); 
+                            grid-column: 3; 
+                            grid-row: 2;
+                            background-size: contain;
+                            background-position: center;
+                            background-repeat: no-repeat;}
+    .cuadro:nth-child(3) { background-color: #2ecc71; }
+    .cuadro:nth-child(4) { background-color: #f1c40f; }
+    .cuadro:nth-child(5) { background-color: #9b59b6; grid-column: 2; grid-row: 1;}
+    .cuadro:nth-child(6) { background-color: #e67e22; }
+  
