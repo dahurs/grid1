@@ -39,4 +39,7 @@ background-color: green;
 
 .item5{margin: 10px;
 background-color: gray;
+grid-column: 3/6; /*se movió a esa posicion*/
+grid-row: 3/4;
+
 }
